@@ -1,0 +1,36 @@
+﻿<div data-role="page" id="Article" ngm-pagebeforeshow="getArticle()" ng-controller="ArticleController" >
+    <div data-role="content" id="article-content" class="hidden" >
+        <div data-role="header" data-position="fixed">
+            <a data-iconpos="left" data-role="button" data-icon="arrow-l" title="Home" href="ServerPicker" data-rel="back">Back</a>
+            <h1 class="ui-title" role="heading" aria-level="1">Sitecore 2 Go!</h1>
+            <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
+        </div>
+        <div id="article-header" >
+            <h1>{{article.DisplayName}}</h1>
+        </div>
+        <div class="section content"></div>
+        <div class="section info">
+            <div class="header">
+                <h3>{{article.title}}</h3>
+            </div>
+            <ul data-role="listview" class="list" data-inset="true">
+                <li data-role="list-divider" data-theme="a"></li>
+                <li ng-repeat="field in fields">
+                    <h3>{{ field.Name }}</h3>
+                    <p ng-bind-html-unsafe="field.Value"></p>
+                    <p class="ui-li-aside">{{field.Type}}</p>
+                </li>
+                <li ng-show="fields.length === 0">This article has no custom fields.</li>
+                <li data-role="list-divider" data-theme="a"></li>
+            </ul>
+        </div>
+        <div data-role="footer" data-theme="a" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a data-icon="check" data-theme="a" data-rel="back">Save</a></li>
+                    <li><a data-icon="delete" id="logout" data-theme="d" data-rel="back">Cancel</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+﻿<div data-role="page" id="Articles" ngm-pagebeforeshow="getArticles()" ng-controller="ArticlesController" >
+    <div data-role="content" id="statesList" class="hidden" >
+        <div data-role="header" data-position="fixed">
+            <a data-iconpos="left" data-role="button" data-icon="arrow-l" title="Home" href="ServerPicker" data-rel="back">Back</a>
+            <h1 class="ui-title" role="heading" aria-level="1">
+                <a href="ServerPicker" data-theme="c" data-direction="reverse">All</a> &gt;
+                <a href="Workflows/{{server.name}}" data-theme="c" data-direction="reverse">{{ server.name }}</a> &gt;
+                <a href="WorkflowStates/{{server.name}}/{{ workflow.ID}}" data-theme="c" data-direction="reverse">{{ workflow.DisplayName }}</a>  &gt;
+                {{ state.DisplayName }}
+            </h1>
+            <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
+        </div>
+        <ul data-role="listview" class="list" data-inset="true">
+            <li data-role="list-divider" data-theme="a"></li>
+            <li ng-repeat="article in filtered = (articles | filter : {workflowState : state.ID})">                        
+                <a data-iconpos="right" href="Article/{{server.name}}/{{workflow.ID}}/{{state.ID}}/{{article.ID}}">{{ article.DisplayName }} </a>
+            </li>
+            <li ng-show="filtered.length === 0">There are no articles in this workflow state.</li>
+            <li data-role="list-divider" data-theme="a"></li>
+        </ul>
+        <div data-role="footer" data-theme="a" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a data-icon="back" data-theme="a" data-rel="back" href="WorkflowStates/{{server.name}}/{{workflow.ID}}">Back to States</a></li>
+                    <li><a data-icon="refresh" data-theme="a" ng-click="reloadArticles()" class="ui-state-persist">Refresh Article List</a></li>
+                    <li><a data-icon="refresh" data-theme="a" ng-click="reloadArticles()">Refresh Article List</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+﻿<div data-role="page" id="Workflows" ng-controller="WorkflowController" ngm-pagebeforeshow="getWorkflows()">
+    <div data-role="content" role="main">
+        <div data-role="header" data-position="fixed">
+            <a data-iconpos="left" data-role="button" data-icon="arrow-l" title="Home" href="ServerPicker" data-rel="back">Back</a>
+            <h1 class="ui-title" role="heading" aria-level="1">
+                <a href="ServerPicker" data-theme="c" data-direction="reverse">All</a> &gt;
+                {{ server.name }}
+            </h1>
+            <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
+        </div>
+        <ul data-role="listview" class="list" data-inset="true">
+            <li data-role="list-divider" data-theme="a"></li>
+            <li ng-repeat="workflow in workflows">                        
+                <a data-iconpos="right" href="WorkflowStates/{{server.name}}/{{workflow.ID}}">{{ workflow.DisplayName }} </a>
+            </li>
+            <li data-role="list-divider" data-theme="a"></li>
+        </ul>
+
+        <div data-role="footer" data-theme="a" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a data-icon="refresh" data-theme="a" ng-click="getWorkflows()">Refresh</a></li>
+                    <li><a href="ServerPicker" data-icon="home" id="A1"data-theme="d" data-rel="back" >Switch Server</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

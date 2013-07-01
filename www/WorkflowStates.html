@@ -1,0 +1,30 @@
+﻿<div data-role="page" id="WorkflowStates" ngm-pagebeforeshow="getWorkflowStates()" ng-controller="WorkflowStatesController" >
+    <div data-role="content" id="statesList" class="hidden" >
+        <div data-role="header" data-position="fixed">
+            <a data-iconpos="left" data-role="button" data-icon="arrow-l" title="Home" href="ServerPicker" data-rel="back">Back</a>
+            <h1 class="ui-title" role="heading" aria-level="1">
+                <a href="ServerPicker" data-theme="c" data-direction="reverse">All</a> &gt;
+                <a href="Workflows/{{server.name}}" data-theme="c" data-direction="reverse">{{ server.name }}</a> &gt;
+                {{ workflow.DisplayName }}
+            </h1>
+            <!--<h1 class="ui-title" role="heading" aria-level="1">{{ server.name }} &gt; {{ workflow.DisplayName }} </h1>-->
+            <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
+        </div>
+        <ul data-role="listview" class="list" data-inset="true">
+            <li data-role="list-divider" data-theme="a"></li>
+            <li ng-repeat="state in states | filter : {final : 'false'}">                        
+                <a data-iconpos="right" href="Articles/{{server.name}}/{{workflow.ID}}/{{state.ID}}">{{ state.DisplayName }} <span class="ui-li-count">{{ state.articles.length }}</span></a>
+            </li>
+            <li data-role="list-divider" data-theme="a"></li>
+        </ul>
+        <div data-role="footer" data-theme="a" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a data-icon="refresh" data-theme="a" ng-click="getWorkflowStates()">Refresh</a></li>
+                    <li><a href="Workflows/{{serverName}}"data-icon="back" data-theme="a" data-rel="back" >Workflows</a></li>
+                    <li><a href="serverPicker" data-icon="home" id="A1"data-theme="d" data-rel="back" >Switch Server</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+﻿<div data-role="page" id="ServerDetails">
+    <div data-role="content"  id="loginContent" ng-controller="ServerDetailsController"  ngm-pagebeforeshow="setupServerDetails()">
+        <div data-role="header" data-position="fixed">
+            <a data-iconpos="left" data-role="button" data-icon="arrow-l" title="Home" href="ServerPicker" data-rel="back">Back</a>
+            <h1 class="ui-title" role="heading" aria-level="1">Sitecore 2 Go!</h1>
+            <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
+        </div>
+        <form id="loginForm">
+            <div data-role="fieldcontain">
+                <label for="accountName" >Account name</label>
+                <input name="accountName" id="accountName" ng-model="accountName" placeholder="My Sitecore"/>
+            </div>
+            <div data-role="fieldcontain">
+                <fieldset data-role="controlgroup" data-type="horizontal">
+                    <legend>Security:</legend>
+                    <input type="radio" name="radioChoiceSecurity" ng-model="transport" id="radioChoiceHttp" value="http" />
+                    <label for="radioChoiceHttp">http</label>
+                    <input type="radio" name="radioChoiceSecurity" ng-model="transport" id="radioChoiceHttps" value="https" />
+                    <label for="radioChoiceHttps">https</label>
+                </fieldset>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="sitecore" >Host name</label>
+                <input name="sitecore" id="sitecore" ng-model="hostName" placeholder="Sitecore server host name"/>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="userName" >User name</label>
+                <input name="userName" id="userName" ng-model="userName" placeholder="My user name"/>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="password" >Password</label>
+                <input type="password" id="password" ng-model="password" name="password" placeholder="My password"/>
+            </div>
+        </form>
+
+        <br/>
+        <div id="loginResult"></div>
+        <div data-role="footer" data-theme="a" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a data-icon="check" data-theme="a" class="ui-state-persist" ng-click="serverSaveClick()" data-rel="back">Save</a></li>
+                    <li><a href="ServerPicker" data-icon="delete" id="logout" data-theme="d" data-rel="back">Cancel</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

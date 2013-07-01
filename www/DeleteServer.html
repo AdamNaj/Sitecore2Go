@@ -1,0 +1,14 @@
+﻿<div data-role="dialog" id="DeleteServer" ngm-pagebeforeshow="setupServerDetails()" ng-controller="ServerDetailsController" >
+	
+    <div data-role="header" data-theme="d">
+        <h1>Delete {{ server.name }}</h1>
+    </div>
+
+    <div data-role="content" data-theme="c">
+        <p>Click OK to delete {{ server.name }} from your server list.</p>        
+        <p>
+            <a href="ServerPicker" data-role="button" data-rel="back" data-theme="b" ng-click="deleteServer()">OK</a>
+            <a href="ServerPicker" data-role="button" data-rel="back">Cancel</a>
+        </p>
+    </div>
+</div>

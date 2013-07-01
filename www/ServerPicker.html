@@ -1,0 +1,46 @@
+﻿<div data-role="page" id="ServerPicker" ng-controller="ServerPickerController">
+    <div data-role="content" role="main">
+        <div data-role="header" data-position="fixed">
+<!--
+            <a data-iconpos="left" data-role="button" data-icon="arrow-l" title="Home" href="ServerPicker" data-rel="back">Back</a>
+-->
+            <a style="display: none;">Dummy</a>
+            <h1 class="ui-title" role="heading" aria-level="1">Sitecore 2 Go!</h1>
+            <a data-iconpos="notext" href="About" data-role="button" data-icon="menu"></a>
+        </div>
+        <ul data-role="listview" class="list" data-inset="true">
+            <li data-role="list-divider" data-theme="a">Your Sitecore Servers</li>
+            <li ng-repeat="server in servers" >
+                <a href="Workflows/{{ server.name }}">
+                    {{ server.name }}
+                </a>
+                <a href="ServerDetails/{{ server.name }}" data-role="button" class="split-button-custom" data-icon="gear"   data-iconpos="notext" data-theme="a">Configure</a>
+                <a href="DeleteServer/{{ server.name }}"  data-role="button" class="split-button-custom" data-icon="delete" data-iconpos="notext" data-theme="a" data-rel="dialog">Delete</a>
+                <a style="display: none;">Dummy</a>
+            </li>
+            <li ng-show="servers.length === 0">
+                <a href="ServerDetails">
+                No accounts defined
+                <a href="ServerDetails" data-role="button" class="split-button-custom" data-icon="gear"   data-iconpos="notext" data-theme="a">Configure</a>
+                <a style="display: none;">Dummy</a>
+            </li>
+            <li data-role="list-divider" data-theme="a"></li>
+        </ul>
+        <div data-role="footer" data-theme="a" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="ServerDetails" data-role="button" data-icon="plus" data-theme="a">Add new login or server...</a></li>
+                    <li><a href="#" data-role="button" data-icon="plus" data-theme="a" ng-click="showSpinner()" class="">spinner test</a></li>
+                </ul>
+            </div>
+        </div>
+<!--
+        <div data-role="footer" data-theme="a" data-position="fixed">
+            <div data-role="controlgroup" data-type="horizontal">
+                <a data-role="button" href="ServerDetails" data-icon="plus" data-theme="a">Add new login or server...</a>
+                <a data-role="button" href="#" data-icon="plus" data-theme="a" ng-click="showSpinner()" class="">spinner test</a>
+            </div>
+        </div>
+-->
+    </div>
+</div>
